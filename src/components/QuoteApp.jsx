@@ -42,7 +42,12 @@ function QuoteApp() {
   }
 
   function handleAddToFavs() {
-    setFavs([...favs, quote]);
+    const isAlreadyFav = favs.some(
+      (fav) => fav.text === quote.text && fav.author === quote.author
+    );
+    if (!isAlreadyFav) {
+      setFavs([...favs, quote]);
+    }
   }
 
   // useEffect(function () {
