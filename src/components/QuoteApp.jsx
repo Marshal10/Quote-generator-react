@@ -8,6 +8,7 @@ function QuoteApp() {
   const [quote, setQuote] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [showFav, setShowFav] = useState(false);
+  const [favs, setFavs] = useState([]);
 
   async function fetchQuote() {
     try {
@@ -38,6 +39,10 @@ function QuoteApp() {
 
   function toggleShowFav() {
     setShowFav((fav) => !fav);
+  }
+
+  function handleAddToFavs() {
+    setFavs([...favs, quote]);
   }
 
   // useEffect(function () {
@@ -73,25 +78,26 @@ function QuoteApp() {
           <button className="btn btn-new" onClick={fetchQuote}>
             New Quote
           </button>
-          <button className="btn btn-fav">Add to Favorites</button>
+          <button className="btn btn-fav" onClick={handleAddToFavs}>
+            Add to Favorites
+          </button>
         </div>
         {showFav && (
           <div className="favorites">
             <button className="btn-close" onClick={toggleShowFav}>
               <i className="bx bx-x"></i>
             </button>
-            <div className="fav-quote">
-              <button className="fav-quote-delete">
-                <i className="bx bx-x-circle"></i>
-              </button>
-              <div className="fav-quote-content">
-                <div className="fav-quote-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem,
-                  ducimus dicta. Architecto debitis quibusdam ducimus?
+            {favs.map((fav, index) => (
+              <div className="fav-quote" key={index}>
+                <button className="fav-quote-delete">
+                  <i className="bx bx-x-circle"></i>
+                </button>
+                <div className="fav-quote-content">
+                  <div className="fav-quote-text">{fav.text}</div>
+                  <div className="fav-quote-author">{fav.author}</div>
                 </div>
-                <div className="fav-quote-author">xyz</div>
               </div>
-            </div>
+            ))}
           </div>
         )}
       </div>
