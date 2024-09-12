@@ -7,6 +7,7 @@ const apiKey = import.meta.env.VITE_QUOTES_API;
 function QuoteApp() {
   const [quote, setQuote] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [showFav, setShowFav] = useState(false);
 
   async function fetchQuote() {
     try {
@@ -35,6 +36,10 @@ function QuoteApp() {
     }
   }
 
+  function toggleShowFav() {
+    setShowFav((fav) => !fav);
+  }
+
   // useEffect(function () {
   //   fetchQuote();
   // }, []);
@@ -43,7 +48,7 @@ function QuoteApp() {
     <div className="container">
       <div className="quotes-app">
         <h1 className="quote-header">Quote.</h1>
-        <i className="bx bxs-heart fav-icon"></i>
+        <i className="bx bxs-heart fav-icon" onClick={toggleShowFav}></i>
         {isLoading ? (
           <div className="loader">
             <div data-glitch="Loading..." className="glitch">
@@ -70,23 +75,25 @@ function QuoteApp() {
           </button>
           <button className="btn btn-fav">Add to Favorites</button>
         </div>
-        <div className="favorites">
-          <button className="btn-close">
-            <i className="bx bx-x"></i>
-          </button>
-          <div className="fav-quote">
-            <button className="fav-quote-delete">
-              <i className="bx bx-x-circle"></i>
+        {showFav && (
+          <div className="favorites">
+            <button className="btn-close" onClick={toggleShowFav}>
+              <i className="bx bx-x"></i>
             </button>
-            <div className="fav-quote-content">
-              <div className="fav-quote-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem,
-                ducimus dicta. Architecto debitis quibusdam ducimus?
+            <div className="fav-quote">
+              <button className="fav-quote-delete">
+                <i className="bx bx-x-circle"></i>
+              </button>
+              <div className="fav-quote-content">
+                <div className="fav-quote-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem,
+                  ducimus dicta. Architecto debitis quibusdam ducimus?
+                </div>
+                <div className="fav-quote-author">xyz</div>
               </div>
-              <div className="fav-quote-author">xyz</div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
