@@ -89,7 +89,13 @@ function QuoteApp() {
             </button>
             {favs.map((fav, index) => (
               <div className="fav-quote" key={index}>
-                <button className="fav-quote-delete">
+                <button
+                  className="fav-quote-delete"
+                  onClick={() => {
+                    const updatedFavs = favs.filter((fav, i) => i !== index);
+                    setFavs(updatedFavs);
+                  }}
+                >
                   <i className="bx bx-x-circle"></i>
                 </button>
                 <div className="fav-quote-content">
