@@ -35,9 +35,9 @@ function QuoteApp() {
     }
   }
 
-  useEffect(function () {
-    fetchQuote();
-  }, []);
+  // useEffect(function () {
+  //   fetchQuote();
+  // }, []);
 
   return (
     <div className="container">
@@ -69,6 +69,23 @@ function QuoteApp() {
             New Quote
           </button>
           <button className="btn btn-fav">Add to Favorites</button>
+        </div>
+        <div className="favorites">
+          <button className="btn-close">
+            <i className="bx bx-x"></i>
+          </button>
+          <div className="fav-quote">
+            <button className="fav-quote-delete">
+              <i className="bx bx-x-circle"></i>
+            </button>
+            <div className="fav-quote-content">
+              <div className="fav-quote-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem,
+                ducimus dicta. Architecto debitis quibusdam ducimus?
+              </div>
+              <div className="fav-quote-author">xyz</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
