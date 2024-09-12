@@ -330,3 +330,21 @@ button:disabled {
     transform: skewX(10deg) skewY(-10deg);
   }
 }
+
+@media (max-width: 850px) {
+  .quotes-app {
+    width: 75vmin;
+    aspect-ratio: 2 / 3;
+  }
+}
+
+@media (max-width: 550px) {
+  .quotes-app {
+    aspect-ratio: 1 / 2;
+  }
+
+  .buttons {
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+}

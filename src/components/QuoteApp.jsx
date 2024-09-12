@@ -50,9 +50,9 @@ function QuoteApp() {
     }
   }
 
-  // useEffect(function () {
-  //   fetchQuote();
-  // }, []);
+  useEffect(function () {
+    fetchQuote();
+  }, []);
 
   return (
     <div className="container">
