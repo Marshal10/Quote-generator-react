@@ -80,10 +80,18 @@ function QuoteApp() {
           <div className="circle-4"></div>
         </div>
         <div className="buttons">
-          <button className="btn btn-new" onClick={fetchQuote}>
+          <button
+            className="btn btn-new"
+            onClick={fetchQuote}
+            disabled={isLoading}
+          >
             New Quote
           </button>
-          <button className="btn btn-fav" onClick={handleAddToFavs}>
+          <button
+            className="btn btn-fav"
+            onClick={handleAddToFavs}
+            disabled={isLoading}
+          >
             Add to Favorites
           </button>
         </div>
